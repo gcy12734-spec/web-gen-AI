@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Car Sale | Add Car</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-placeholder">OCS</div>
+                <span class="logo-text">Online Car Sale</span>
+            </a>
+            <nav class="main-nav" id="main-nav">
+                <ul class="nav-list">
+                    <li><a href="search.html" class="nav-link">Search</a></li>
+                    <li><a href="add-car.html" class="nav-link">Add Car</a></li>
+                    <li><a href="login.html" class="nav-link">Login</a></li>
+                    <li><a href="registration.html" class="nav-link btn-primary">Registration</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container py-xl">
+        <div class="form-card wide-card">
+            <div class="form-header">
+                <h2>List Your Car for Sale</h2>
+                <p>Fill in the details below and upload a clear picture of your vehicle.</p>
+            </div>
+
+            <form id="addCarForm" class="add-car-layout">
+                
+                <div class="upload-column">
+                    <label class="section-label">Vehicle Image</label>
+                    <div class="upload-zone" id="uploadZone">
+                        <input type="file" id="carImage" name="carImage" accept="image/*" hidden>
+                        
+                        <div class="upload-prompt" id="uploadPrompt">
+                            <div class="upload-icon">📸</div>
+                            <p class="upload-text"><strong>Drag & Drop</strong> your image here</p>
+                            <p class="upload-subtext">or click to browse from your device</p>
+                        </div>
+
+                        <img id="imagePreview" class="image-preview" src="" alt="Car Preview">
+                        <button type="button" id="removeImageBtn" class="btn btn-outline remove-img-btn" style="display: none;">Remove Image</button>
+                    </div>
+                </div>
+
+                <div class="details-column">
+                    <div class="form-group">
+                        <label for="carModel">Car Model</label>
+                        <input type="text" id="carModel" name="carModel" placeholder="e.g., Toyota Camry" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group half-width">
+                            <label for="carYear">Year</label>
+                            <input type="number" id="carYear" name="carYear" min="1990" max="2025" placeholder="e.g., 2021" required>
+                        </div>
+                        <div class="form-group half-width">
+                            <label for="carColour">Colour</label>
+                            <input type="text" id="carColour" name="carColour" placeholder="e.g., Silver" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="carLocation">Location</label>
+                        <input type="text" id="carLocation" name="carLocation" placeholder="e.g., Beijing" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="carPrice">Price (RMB)</label>
+                        <input type="number" id="carPrice" name="carPrice" placeholder="e.g., 150000" min="0" required>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-large btn-full">Post Advertisement</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="add-car.js"></script>
+</body>
+</html>
