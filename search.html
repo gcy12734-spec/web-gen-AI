@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Car Sale | Search Cars</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-placeholder">OCS</div>
+                <span class="logo-text">Online Car Sale</span>
+            </a>
+            <nav class="main-nav" id="main-nav">
+                <ul class="nav-list">
+                    <li><a href="search.html" class="nav-link btn-primary">Search</a></li>
+                    <li><a href="add-car.html" class="nav-link">Add Car</a></li>
+                    <li><a href="login.html" class="nav-link">Login</a></li>
+                    <li><a href="registration.html" class="nav-link">Registration</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container py-xl">
+        <section class="search-section">
+            <div class="search-bar-card">
+                <form id="searchForm" class="search-form">
+                    <div class="search-input-group">
+                        <label for="searchModel">Car Model</label>
+                        <input type="text" id="searchModel" placeholder="e.g., Honda, Camry...">
+                    </div>
+                    <div class="search-input-group">
+                        <label for="searchYear">Manufacturing Year</label>
+                        <input type="number" id="searchYear" placeholder="e.g., 2020">
+                    </div>
+                    <div class="search-button-group">
+                        <button type="submit" class="btn btn-primary">Search Vehicles</button>
+                        <button type="button" id="resetBtn" class="btn btn-outline">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section class="results-section">
+            <h3 class="results-title">Available Vehicles</h3>
+            <div id="carGrid" class="car-grid">
+                </div>
+            <div id="noResults" class="no-results" style="display: none;">
+                <p>No vehicles match your search criteria. Try adjusting your filters.</p>
+            </div>
+        </section>
+    </main>
+
+    <div id="carModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <img id="modalImage" src="" alt="Car Image">
+                </div>
+                <div class="modal-details">
+                    <h2 id="modalTitle">Car Model</h2>
+                    <p class="modal-price" id="modalPrice">¥0</p>
+                    <div class="modal-specs">
+                        <p><strong>Year:</strong> <span id="modalYear"></span></p>
+                        <p><strong>Color:</strong> <span id="modalColor"></span></p>
+                        <p><strong>Location:</strong> <span id="modalLocation"></span></p>
+                    </div>
+                    <button class="btn btn-primary btn-full mt-4">Contact Seller</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="search.js"></script>
+</body>
+</html>
