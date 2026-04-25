@@ -4,78 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Car Sale | Search Cars</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
 </head>
 <body class="bg-light">
 
     <header class="site-header">
         <div class="container header-container">
-            <a href="index.html" class="logo">
-                <div class="logo-placeholder">OCS</div>
-                <span class="logo-text">Online Car Sale</span>
-            </a>
+            <a href="index.html" class="logo"><div class="logo-placeholder">OCS</div><span class="logo-text">Online Car Sale</span></a>
             <nav class="main-nav" id="main-nav">
                 <ul class="nav-list">
                     <li><a href="search.html" class="nav-link btn-primary">Search</a></li>
-                    <li><a href="add-car.html" class="nav-link">Add Car</a></li>
-                    <li><a href="login.html" class="nav-link">Login</a></li>
-                    <li><a href="registration.html" class="nav-link">Registration</a></li>
+                    <li class="auth-required hidden"><a href="add-car.html" class="nav-link">Add Car</a></li>
+                    <li class="guest-only"><a href="log-in.html" class="nav-link">Login</a></li>
+                    <li class="guest-only"><a href="registration.html" class="nav-link">Registration</a></li>
                 </ul>
             </nav>
+            <div class="user-menu" id="userMenu">
+                <div class="avatar" id="userAvatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+                <div class="avatar-dropdown" id="avatarDropdown"></div>
+            </div>
         </div>
     </header>
 
     <main class="container py-xl">
         <section class="search-section">
-            <div class="search-bar-card">
-                <form id="searchForm" class="search-form">
-                    <div class="search-input-group">
+            <div class="filter-card">
+                <form id="searchForm" class="filter-grid">
+                    
+                    <div class="form-group col-span-2">
                         <label for="searchModel">Car Model</label>
-                        <input type="text" id="searchModel" placeholder="e.g., Honda, Camry...">
+                        <input type="text" id="searchModel" placeholder="e.g., Honda, Camry, BMW...">
                     </div>
-                    <div class="search-input-group">
-                        <label for="searchYear">Manufacturing Year</label>
-                        <input type="number" id="searchYear" placeholder="e.g., 2020">
+
+                    <div class="form-group col-span-2">
+                        <label for="searchLocation">Location</label>
+                        <select id="searchLocation">
+                            <option value="">All Locations</option>
+                            <option value="Beijing">Beijing</option>
+                            <option value="Shanghai">Shanghai</option>
+                            <option value="Guangzhou">Guangzhou</option>
+                            <option value="Shenzhen">Shenzhen</option>
+                            <option value="Hangzhou">Hangzhou</option>
+                            <option value="Chengdu">Chengdu</option>
+                        </select>
                     </div>
-                    <div class="search-button-group">
-                        <button type="submit" class="btn btn-primary">Search Vehicles</button>
+
+                    <div class="form-group">
+                        <label for="minPrice">Min Price (¥)</label>
+                        <input type="number" id="minPrice" placeholder="0" min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="maxPrice">Max Price (¥)</label>
+                        <input type="number" id="maxPrice" placeholder="Any" min="0">
+                    </div>
+
+                    <div class="filter-actions col-span-2">
+                        <button type="submit" class="btn btn-primary">Search & Filter</button>
                         <button type="button" id="resetBtn" class="btn btn-outline">Reset</button>
                     </div>
+
                 </form>
             </div>
         </section>
 
-        <section class="results-section">
-            <h3 class="results-title">Available Vehicles</h3>
-            <div id="carGrid" class="car-grid">
-                </div>
-            <div id="noResults" class="no-results" style="display: none;">
-                <p>No vehicles match your search criteria. Try adjusting your filters.</p>
+        <section class="results-section" style="margin-top: 40px;">
+            <h3 style="margin-bottom: 20px; color: var(--text-dark);">Search Results</h3>
+            <div id="carGrid" class="car-grid"></div>
+            <div id="noResults" style="display: none; text-align: center; padding: 40px; color: var(--text-light);">
+                <p>No vehicles match your search criteria.</p>
             </div>
         </section>
     </main>
 
-    <div id="carModal" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-modal" id="closeModal">&times;</span>
-            <div class="modal-body">
-                <div class="modal-image-container">
-                    <img id="modalImage" src="" alt="Car Image">
-                </div>
-                <div class="modal-details">
-                    <h2 id="modalTitle">Car Model</h2>
-                    <p class="modal-price" id="modalPrice">¥0</p>
-                    <div class="modal-specs">
-                        <p><strong>Year:</strong> <span id="modalYear"></span></p>
-                        <p><strong>Color:</strong> <span id="modalColor"></span></p>
-                        <p><strong>Location:</strong> <span id="modalLocation"></span></p>
-                    </div>
-                    <button class="btn btn-primary btn-full mt-4">Contact Seller</button>
-                </div>
-            </div>
+    <footer class="site-footer">
+    <div class="container">
+        <h4 class="footer-brand-title">Official Brand Partners</h4>
+        <div class="brand-grid">
+            <a href="https://www.toyota.com" target="_blank" class="brand-link">TOYOTA</a>
+            <a href="https://www.bmw.com" target="_blank" class="brand-link">BMW</a>
+            <a href="https://www.audi.com" target="_blank" class="brand-link">AUDI</a>
+            <a href="https://www.tesla.com" target="_blank" class="brand-link">TESLA</a>
+            <a href="https://www.mercedes-benz.com" target="_blank" class="brand-link">MERCEDES</a>
+            <a href="https://www.porsche.com" target="_blank" class="brand-link">PORSCHE</a>
         </div>
     </div>
+</footer>
 
-    <script src="search.js"></script>
+    <script src="js/auth-state.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/search.js"></script>
 </body>
 </html>

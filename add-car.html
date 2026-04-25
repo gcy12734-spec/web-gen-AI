@@ -4,29 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Car Sale | Add Car</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/animations.css">
 </head>
-<body class="bg-light">
+<body class="bg-light animated-bg">
 
-    <header class="site-header">
-        <div class="container header-container">
-            <a href="index.html" class="logo">
-                <div class="logo-placeholder">OCS</div>
-                <span class="logo-text">Online Car Sale</span>
-            </a>
-            <nav class="main-nav" id="main-nav">
-                <ul class="nav-list">
-                    <li><a href="search.html" class="nav-link">Search</a></li>
-                    <li><a href="add-car.html" class="nav-link">Add Car</a></li>
-                    <li><a href="login.html" class="nav-link">Login</a></li>
-                    <li><a href="registration.html" class="nav-link btn-primary">Registration</a></li>
-                </ul>
-            </nav>
+<header class="site-header">
+    <div class="container header-container">
+        <a href="index.html" class="logo">
+            <div class="logo-placeholder">OCS</div>
+            <span class="logo-text">Online Car Sale</span>
+        </a>
+
+        <nav class="main-nav" id="main-nav">
+            <ul class="nav-list">
+                <li><a href="search.html" class="nav-link">Search</a></li>
+                <li class="auth-required hidden"><a href="add-car.html" class="nav-link btn-primary">Add Car</a></li>
+                <li class="guest-only"><a href="log-in.html" class="nav-link">Login</a></li>
+                <li class="guest-only"><a href="registration.html" class="nav-link">Registration</a></li>
+            </ul>
+        </nav>
+
+        <div class="user-menu" id="userMenu">
+            <div class="avatar" id="userAvatar" aria-label="User Menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            </div>
+            <div class="avatar-dropdown" id="avatarDropdown"></div>
         </div>
-    </header>
+
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
 
     <div class="container py-xl">
-        <div class="form-card wide-card">
+        <div class="form-card wide-card auth-required">
             <div class="form-header">
                 <h2>List Your Car for Sale</h2>
                 <p>Fill in the details below and upload a clear picture of your vehicle.</p>
@@ -40,9 +59,9 @@
                         <input type="file" id="carImage" name="carImage" accept="image/*" hidden>
                         
                         <div class="upload-prompt" id="uploadPrompt">
-                            <div class="upload-icon">📸</div>
+                            <div class="upload-icon" style="font-size: 3rem; margin-bottom: 10px;">📸</div>
                             <p class="upload-text"><strong>Drag & Drop</strong> your image here</p>
-                            <p class="upload-subtext">or click to browse from your device</p>
+                            <p class="upload-subtext" style="color: var(--text-light); font-size: 0.9rem;">or click to browse</p>
                         </div>
 
                         <img id="imagePreview" class="image-preview" src="" alt="Car Preview">
@@ -73,11 +92,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="carPrice">Price (RMB)</label>
+                        <label for="carPrice">Price (¥)</label>
                         <input type="number" id="carPrice" name="carPrice" placeholder="e.g., 150000" min="0" required>
                     </div>
 
-                    <div class="form-actions">
+                    <div class="form-actions" style="margin-top: 10px;">
                         <button type="submit" class="btn btn-primary btn-large btn-full">Post Advertisement</button>
                     </div>
                 </div>
@@ -85,6 +104,21 @@
         </div>
     </div>
 
-    <script src="add-car.js"></script>
+    <footer class="site-footer">
+    <div class="container">
+        <h4 class="footer-brand-title">Official Brand Partners</h4>
+        <div class="brand-grid">
+            <a href="https://www.toyota.com" target="_blank" class="brand-link">TOYOTA</a>
+            <a href="https://www.bmw.com" target="_blank" class="brand-link">BMW</a>
+            <a href="https://www.audi.com" target="_blank" class="brand-link">AUDI</a>
+            <a href="https://www.tesla.com" target="_blank" class="brand-link">TESLA</a>
+            <a href="https://www.mercedes-benz.com" target="_blank" class="brand-link">MERCEDES</a>
+            <a href="https://www.porsche.com" target="_blank" class="brand-link">PORSCHE</a>
+        </div>
+    </div>
+</footer>
+
+    <script src="js/auth-state.js"></script>
+    <script src="js/add-car.js"></script>
 </body>
 </html>
